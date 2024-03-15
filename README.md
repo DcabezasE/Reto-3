@@ -1,5 +1,5 @@
 # Reto-3
-classDiagram
+# classDiagram
     MenuItem --* Order
     
     MenuItem <|-- Beverage
