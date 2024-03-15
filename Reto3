@@ -1,0 +1,55 @@
+class MenuItem:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def calculate_total_price(self, quantity):
+        return self.price * quantity
+
+class Beverage(MenuItem):
+    def __init__(self, name, price):
+        super().__init__(name, price)
+
+class Appetizer(MenuItem):
+    def __init__(self, name, price):
+        super().__init__(name, price)
+
+class MainCourse(MenuItem):
+    def __init__(self, name, price):
+        super().__init__(name, price)
+
+class Order:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, menu_item, quantity=1):
+        self.items.append((menu_item, quantity))
+
+    def calculate_total_bill(self):
+        total_bill = 0
+        for item, quantity in self.items:
+            total_bill += item.calculate_total_price(quantity)
+        return total_bill
+
+
+coke = Beverage("Sprite", 2.5)
+coke2 = Beverage("CocaCola", 3.0)
+
+wings = Appetizer("Alitas BBQ", 8.0)
+wings2 = Appetizer("Alitas Miel", 7.5)
+wings3 = Appetizer("Alitas Miel mostaza", 8.2)
+wings4 = Appetizer("Alitas Ranch", 8.5)
+
+pasta = MainCourse("Pasta Carbonara", 15.0)
+pasta2 = MainCourse("Pasta Pesto", 14.0)
+pasta3 = MainCourse("Pasta Bechamel", 15.5)
+pasta4 = MainCourse("Pasta Napolitana", 16.0)
+
+my_order = Order()
+my_order.add_item(coke, 2)
+my_order.add_item(wings4, 2)
+my_order.add_item(pasta, 3)
+my_order.add_item(pasta3, 3)
+
+total_amount = my_order.calculate_total_bill()
+print(f"Total monto de la cuenta: ${total_amount:.2f}")
